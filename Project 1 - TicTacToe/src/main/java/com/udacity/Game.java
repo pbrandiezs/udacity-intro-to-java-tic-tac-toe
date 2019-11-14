@@ -150,14 +150,15 @@ public class Game {
      */
     public String checkGameWinner(char [][]grid){
         String result = "None";
+        boolean movesRemain = false;
         //Student code goes here ...
         //check vertical
         for(int i=0;i<3;i++){
             if(grid[i][0] == grid[i][1] && grid[i][1] == grid[i][2]) {
-                if(grid[i][0] == 'X') {
+                if(grid[i][0] == 'x') {
                     result = "X wins";
                 }
-                if(grid[i][0] == 'O') {
+                if(grid[i][0] == 'o') {
                     result = "O wins";
                 }
             }
@@ -165,32 +166,45 @@ public class Game {
         //check horizontal
         for(int j=0;j<3;j++){
             if(grid[0][j] == grid[1][j] && grid[1][j] == grid[2][j]) {
-                if(grid[0][j] == 'X') {
+                if(grid[0][j] == 'x') {
                     result = "X wins";
                 }
-                if(grid[0][j] == 'O') {
+                if(grid[0][j] == 'o') {
                     result = "O wins";
                 }
             }
         }
         //check diagonal
         if(grid[0][0] == grid[1][1] && grid[1][1] == grid[2][2]) {
-            if(grid[0][0] == 'X') {
+            if(grid[0][0] == 'x') {
                 result = "X wins";
             }
-            if(grid[0][0] == 'O') {
+            if(grid[0][0] == 'o') {
                 result = "O wins";
             }
         }
         if(grid[0][2] == grid[1][1] && grid[1][1] == grid[2][0]) {
-            if(grid[0][2] == 'X') {
+            if(grid[0][2] == 'x') {
                 result = "X wins";
             }
-            if(grid[0][2] == 'O') {
+            if(grid[0][2] == 'o') {
                 result = "O wins";
             }
         }
-
+        //check if tie
+        if (result == "None") {
+            for(int i=0;i<3;i++){
+                for(int j=0;j<3;j++){
+                    if (grid[i][j] == '-') {
+                        //moves remain
+                        movesRemain = true;
+                    }
+                }
+            }
+            if (result == "None" && !movesRemain) {
+                result = "Tie";
+            }
+        }
         return result;
     }
 
