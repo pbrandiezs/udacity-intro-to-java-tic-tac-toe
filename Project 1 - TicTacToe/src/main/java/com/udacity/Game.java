@@ -151,6 +151,46 @@ public class Game {
     public String checkGameWinner(char [][]grid){
         String result = "None";
         //Student code goes here ...
+        //check vertical
+        for(int i=0;i<3;i++){
+            if(grid[i][0] == grid[i][1] && grid[i][1] == grid[i][2]) {
+                if(grid[i][0] == 'X') {
+                    result = "X wins";
+                }
+                if(grid[i][0] == 'O') {
+                    result = "O wins";
+                }
+            }
+        }
+        //check horizontal
+        for(int j=0;j<3;j++){
+            if(grid[0][j] == grid[1][j] && grid[1][j] == grid[2][j]) {
+                if(grid[0][j] == 'X') {
+                    result = "X wins";
+                }
+                if(grid[0][j] == 'O') {
+                    result = "O wins";
+                }
+            }
+        }
+        //check diagonal
+        if(grid[0][0] == grid[1][1] && grid[1][1] == grid[2][2]) {
+            if(grid[0][0] == 'X') {
+                result = "X wins";
+            }
+            if(grid[0][0] == 'O') {
+                result = "O wins";
+            }
+        }
+        if(grid[0][2] == grid[1][1] && grid[1][1] == grid[2][0]) {
+            if(grid[0][2] == 'X') {
+                result = "X wins";
+            }
+            if(grid[0][2] == 'O') {
+                result = "O wins";
+            }
+        }
+
         return result;
     }
 
